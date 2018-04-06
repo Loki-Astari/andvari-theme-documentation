@@ -1,4 +1,4 @@
 ---
-layout: doc
+layout: page
 ---
 

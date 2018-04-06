@@ -1,0 +1,23 @@
+<% sub.forEach(function(item) { %>
+    <%
+        var hasValue  = 'value' in item;
+        var hasSub    = 'sub' in item;
+        var needsTitle= hasValue || hasSub;
+        if (needsTitle) {
+    %>
+            <h<%- level %> id="<%- identifier(item.name); %>"><%- item.name %></h<%- level %>>
+    <%  }
+        if ('value' in item) {
+            var localPage = site.pages.find(function(element) {
+                return element.source.split('/').pop() == item.value;
+            });
+            if (localPage) {
+                var data = render(localPage, -1);
+    %>
+                <%- data %>
+    <%      } %>
+    <% } %>
+    <% if ('sub' in item) { %>
+        <%- include('article', {level: level + 1, sub: item.sub}); %>
+    <% } %>
+<% }); %>
