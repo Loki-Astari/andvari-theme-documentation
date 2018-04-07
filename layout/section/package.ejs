@@ -1,0 +1,18 @@
+<%- render(page, -1); %>
+<dl>
+<dt>NameSpace:</dt><dd><%- page.nameSpace %></dd>
+<dt>Headers:</dt><dd><%- page.headers.base %></dd>
+<% page.headers.files.forEach(function(file) { %>
+    <dt><%- file.name %></dt><dd>
+        <ul>
+        <% file.classes.forEach(function(theClass) { %>
+            <li><%- theClass.name %> <%- theClass.parent %></li>
+        <% }); %>
+        <% file.methods.forEach(function(method) { %>
+            <li><%- method.return %> <%- method.name %>()</li>
+        <% }); %>
+        </ul>
+    </dd>
+<% }); %>
+</dl>
+
