@@ -8,7 +8,7 @@
         <% file.classes.forEach(function(theClass) { %>
             <li><%- theClass.name %> <%- theClass.parent %></li>
         <% }); %>
-        <% file.methods.forEach(function(method) { %>
+        <% file.functions.forEach(function(method) { %>
             <li><%- method.return %> <%- method.name %>()</li>
         <% }); %>
         </ul>
