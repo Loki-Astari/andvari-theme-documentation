@@ -4,9 +4,9 @@
             <div class="classRow"><div class="classSect"><%- page.methodInfo.name %></div></div>
             <div class="classRow"><div class="classDesc"><%- page.methodInfo.description %></div></div>
         </div>
-        <% if ('return' in page.methodInfo) { %>
+        <% if ((page.methodInfo.return.type) || (page.methodInfo.return.description)) { %>
         <div class="classBlock">
-            <div class="classRow"><div class="classSect">Return Value</div></div>
+            <div class="classRow"><div class="classSect">Return Value: <%- page.methodInfo.return.type %></div></div>
             <div class="classRow"><div class="classDesc"><%- page.methodInfo.return.description %></div></div>
         </div>
         <% } %>
@@ -16,7 +16,7 @@
         </div>
         <div class="classBlock">
             <% page.methodInfo.parameters.forEach(function(parameter) { %>
-            <div class="classRow"><div class="classItem"><%- parameter.name %></div><div class="classValue"><%- parameter.description %></div></div>
+            <div class="classRow">&nbsp;<div class="classItem"><%- parameter.type %> <%- parameter.name %></div><div class="classValue"><%- parameter.description %></div></div>
             <% }); %>
         </div>
         <% } %>
