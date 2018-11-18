@@ -3,6 +3,9 @@
         <div class="classBlock">
             <div class="classRow"><div class="classItem">Header:   </div><div class="classValue"><%- page.typeInfo.header %></div><div></div></div>
             <div class="classRow"><div class="classItem">NameSpace:</div><div class="classValue"><%- page.typeInfo.namespace %></div><div></div></div>
+            <% if (page.typeInfo.template) { %>
+            <div class="classRow"><div class="classItem">Template: </div><div class="classValue"><%- buildDisplay(page.typeInfo.template) %></div><div></div></div>
+            <% } %>
             <div class="classRow"><div class="classItem">Class:    </div><div class="classValue"><%- buildDisplay(page.typeInfo.classname) %></div><div></div></div>
         </div>
     </div>
