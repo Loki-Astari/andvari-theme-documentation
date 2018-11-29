@@ -43,5 +43,11 @@
         </div>
     </div>
 </div>
-<p><%- page.typeInfo.description %></p>
+<%
+var desc = "";
+if (page.typeInfo.description) {
+    desc = render({content: page.typeInfo.description}, -1);
+}
+%>
+<%- desc %>
 
