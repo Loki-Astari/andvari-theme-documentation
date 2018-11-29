@@ -1,6 +1,6 @@
 <% sub.forEach(function(item) { %>
     <li>
-        <a href="#<%- identifier(item.name); %>" class="toc-h<%- level %> toc-link" data-title="<%- buildTitle(tit, item.name) %>"><%- buildDisplay(item.name) %></a>
+        <a href="#<%- buildTag(item); %>" class="toc-h<%- level %> toc-link" data-title="<%- buildTitle(tit, item.name) %>"><%- buildDisplay(item.name) %></a>
     <%
         if ('value' in item) {
             var localPage = site.pages.find(function(element) {

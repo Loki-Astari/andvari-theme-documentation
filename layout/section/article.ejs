@@ -7,7 +7,7 @@
             });
         }
     %>
-    <h<%- level %> id="<%- identifier(item.name); %>"><%- buildDisplay(item.name) %></h<%- level %>>
+    <h<%- level %> id="<%- buildTag(item); %>"><%- buildDisplay(item.name) %></h<%- level %>>
     <% if (localPage) { %>
         <%- include(localPage.layout, {page: localPage}) %>
     <% } %>
