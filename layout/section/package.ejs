@@ -8,12 +8,12 @@
             <ul>
             <% if (file.classes) { %>
                 <% file.classes.forEach(function(theClass) { %>
-                    <li><%- theClass.name %> <%- theClass.parent %></li>
+                    <li><%- buildDisplay(theClass.name) %> <%- buildDisplay(theClass.parent) %></li>
                 <% }); %>
             <% } %>
             <% if (file.functions) { %>
                 <% file.functions.forEach(function(method) { %>
-                    <li><%- method.return %> <%- method.name %>()</li>
+                    <li><%- buildDisplay(method.return) %> <%- buildDisplay(method.name) %>()</li>
                 <% }); %>
             <% } %>
             </ul>
