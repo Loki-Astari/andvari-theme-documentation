@@ -9,7 +9,7 @@
             if (level < 3 && localPage && 'children' in localPage) {
     %>
                 <ul class="toc-list-h<%- level + 1 %>">
-                    <%- include('toc-menu', {level: level + 1, tit: level == 1 ? item.name : tit, sub: localPage.children}); %>
+                    <%- include('toc-menu', {level: level + 1, tit: level == 0 ? item.name : tit, sub: localPage.children}); %>
                 </ul>
     <% 
             }

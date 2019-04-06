@@ -13,7 +13,13 @@
             <% } %>
             <% if (file.functions) { %>
                 <% file.functions.forEach(function(method) { %>
-                    <li><%- buildDisplay(method.return) %> <%- buildDisplay(method.name) %>()</li>
+                    <li><%- buildDisplay(method.return) %> <%- buildDisplay(method.name) %>
+                    <% if (method.showParam) { %>
+                    ( <%- method.param %> )
+                    <% } else { %>
+                    ()
+                    <% } %>
+                    </li>
                 <% }); %>
             <% } %>
             </ul>

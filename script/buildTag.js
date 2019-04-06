@@ -1,6 +1,6 @@
 
 function buildTag(item) {
-    return (item.tag ? item.tag : item.name).replace(/ /g,"_");;
+    return (item.tag ? item.tag : item.name).replace(/ /g,"");;
 }
 
 module.exports = buildTag;
