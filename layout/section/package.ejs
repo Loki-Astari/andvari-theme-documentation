@@ -1,0 +1,30 @@
+<%- render(page, -1); %>
+<dl>
+<dt>NameSpace:</dt><dd><%- page.nameSpace %></dd>
+<dt>Headers:</dt><dd><%- page.headers.base %></dd>
+<% if (page.headers.files) { %>
+    <% page.headers.files.forEach(function(file) { %>
+        <dt><%- file.name %></dt><dd>
+            <ul>
+            <% if (file.classes) { %>
+                <% file.classes.forEach(function(theClass) { %>
+                    <li><%- buildDisplay(theClass.name) %> <%- buildDisplay(theClass.parent) %></li>
+                <% }); %>
+            <% } %>
+            <% if (file.functions) { %>
+                <% file.functions.forEach(function(method) { %>
+                    <li><%- buildDisplay(method.return) %> <%- buildDisplay(method.name) %>
+                    <% if (method.showParam) { %>
+                    ( <%- method.param %> )
+                    <% } else { %>
+                    ()
+                    <% } %>
+                    </li>
+                <% }); %>
+            <% } %>
+            </ul>
+        </dd>
+    <% }); %>
+<% } %>
+</dl>
+

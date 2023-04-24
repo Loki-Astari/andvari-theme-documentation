@@ -1,0 +1,17 @@
+<% sub.forEach(function(item) { %>
+    <%
+        var localPage;
+        if ('value' in item) {
+            localPage = site.pages.find(function(element) {
+                return element.source.split('/').pop() == item.value;
+            });
+        }
+    %>
+    <h<%- level %> id="<%- buildTag(item); %>"><%- buildDisplay(item.name) %></h<%- level %>>
+    <% if (localPage) { %>
+        <%- include(localPage.layout, {page: localPage}) %>
+    <% } %>
+    <% if (localPage && 'children' in localPage) { %>
+        <%- include('article', {level: level + 1, sub: localPage.children}); %>
+    <% } %>
+<% }); %>

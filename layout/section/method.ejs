@@ -1,0 +1,25 @@
+<div class="classTable">
+    <div class="classLayout">
+        <div class="classBlock">
+            <div class="classRow"><div class="classSect"><%- page.methodInfo.name %></div></div>
+            <div class="classRow"><div class="classDesc"><%- page.methodInfo.description %></div></div>
+        </div>
+        <% if ((page.methodInfo.return.type) || (page.methodInfo.return.description)) { %>
+        <div class="classBlock">
+            <div class="classRow"><div class="classSect">Return Value: <%- page.methodInfo.return.type %></div></div>
+            <div class="classRow"><div class="classDesc"><%- page.methodInfo.return.description %></div></div>
+        </div>
+        <% } %>
+        <% if (page.methodInfo.parameters.length != 0) { %>
+        <div class="classBlock">
+            <div class="classRow"><div class="classSect">Parameters</div></div>
+        </div>
+        <div class="classBlock">
+            <% page.methodInfo.parameters.forEach(function(parameter) { %>
+            <div class="classRow">&nbsp;<div class="classItem"><%- parameter.type %> <%- parameter.name %></div><div class="classValue"><%- parameter.description %></div></div>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="classTable">
+    <div class="classLayout">
+        <div class="classBlock">
+            <div class="classRow"><div class="classItem">Header:   </div><div class="classValue"><%- page.typeInfo.header %></div><div></div></div>
+            <div class="classRow"><div class="classItem">NameSpace:</div><div class="classValue"><%- page.typeInfo.namespace %></div><div></div></div>
+            <% if (page.typeInfo.template) { %>
+            <div class="classRow"><div class="classItem">Template: </div><div class="classValue"><%- buildDisplay(page.typeInfo.template) %></div><div></div></div>
+            <% } %>
+        </div>
+        <% if ((page.typeInfo.return.type) || (page.typeInfo.return.description)) { %>
+        <div class="classBlock">
+            <div class="classRow"><div class="classSect">Return Value: <%- page.typeInfo.return.type %></div></div>
+            <div class="classRow"><div class="classDesc"><%- page.typeInfo.return.description %></div></div>
+        </div>
+        <% } %>
+        <% if (page.typeInfo.parameters.length != 0) { %>
+        <div class="classBlock">
+            <div class="classRow"><div class="classSect">Parameters</div></div>
+        </div>
+        <div class="classBlock">
+            <% page.typeInfo.parameters.forEach(function(parameter) { %>
+            <div class="classRow">&nbsp;<div class="classItem"><%- parameter.type %> <%- parameter.name %></div><div class="classValue"><%- parameter.description %></div></div>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+</div>
+<%
+var desc = "";
+if (page.typeInfo.description) {
+    desc = render({content: page.typeInfo.description}, -1);
+}
+%>
+<%- desc %>
+

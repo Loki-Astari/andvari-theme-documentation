@@ -1,0 +1,53 @@
+<div class="classTable">
+    <div class="classLayout">
+        <div class="classBlock">
+            <div class="classRow"><div class="classItem">Header:   </div><div class="classValue"><%- page.typeInfo.header %></div><div></div></div>
+            <div class="classRow"><div class="classItem">NameSpace:</div><div class="classValue"><%- page.typeInfo.namespace %></div><div></div></div>
+            <% if (page.typeInfo.template) { %>
+            <div class="classRow"><div class="classItem">Template: </div><div class="classValue"><%- buildDisplay(page.typeInfo.template) %></div><div></div></div>
+            <% } %>
+            <div class="classRow"><div class="classItem">Class:    </div><div class="classValue"><%- buildDisplay(page.typeInfo.classname) %></div><div></div></div>
+            <% if (page.typeInfo.parent) { %>
+            <div class="classRow"><div class="classItem">Parent:   </div><div class="classValue"><%- page.typeInfo.parent %></div></div>
+            <% } %>
+        <% if (page.typeInfo.methods.length != 0) { %>
+                <div class="classRow"><div class="classSect">Public Members:</div><div class="classValue"></div><div class="classValue"></div></div>
+                <% page.typeInfo.methods.forEach(function(method) { %>
+                    <div class="classRow">
+                        <div class="methodRet"><%- method.return %></div>
+                        <div class="methodName"><%- method.name %>()</div>
+                        <div class="methodMark"><%- method.mark %></div>
+                    </div>
+                <% }); %>
+        <% } %>
+        <% if ('protected' in page.typeInfo && page.typeInfo.protected.length != 0) { %>
+                <div class="classRow"><div class="classSect">Protected Members:</div><div class="classValue"></div><div class="classValue"></div></div>
+                <% page.typeInfo.protected.forEach(function(method) { %>
+                    <div class="classRow">
+                        <div class="methodRet"><%- method.return %></div>
+                        <div class="methodName"><%- method.name %>()</div>
+                        <div class="methodMark"><%- method.mark %></div>
+                    </div>
+                <% }); %>
+        <% } %>
+        <% if ('virtual' in page.typeInfo && page.typeInfo.virtual.length != 0) { %>
+                <div class="classRow"><div class="classSect">Virtual Members:</div><div class="classValue"></div><div class="classValue"></div></div>
+                <% page.typeInfo.virtual.forEach(function(method) { %>
+                    <div class="classRow">
+                        <div class="methodRet"><%- method.return %></div>
+                        <div class="methodName"><%- method.name %>()</div>
+                        <div class="methodMark"><%- method.mark %></div>
+                    </div>
+                <% }); %>
+        <% } %>
+        </div>
+    </div>
+</div>
+<%
+var desc = "";
+if (page.typeInfo.description) {
+    desc = render({content: page.typeInfo.description}, -1);
+}
+%>
+<%- desc %>
+

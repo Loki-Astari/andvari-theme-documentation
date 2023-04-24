@@ -1,0 +1,20 @@
+<% sub.forEach(function(item) { %>
+    <li>
+        <a href="#<%- buildTag(item); %>" class="toc-h<%- level %> toc-link" data-title="<%- buildTitle(tit, item.name) %>"><%- buildDisplay(item.name) %></a>
+    <%
+        if ('value' in item) {
+            var localPage = site.pages.find(function(element) {
+                return element.source.split('/').pop() == item.value;
+            });
+            if (level < 3 && localPage && 'children' in localPage) {
+    %>
+                <ul class="toc-list-h<%- level + 1 %>">
+                    <%- include('toc-menu', {level: level + 1, tit: level == 0 ? item.name : tit, sub: localPage.children}); %>
+                </ul>
+    <% 
+            }
+        }
+    %>
+    </li>
+<% }); %>
+
